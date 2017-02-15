@@ -17,9 +17,23 @@ import java.util.UUID;
  */
 
 public class CrimePagerActivity extends AppCompatActivity {
-    private ViewPager mViewPager;
+    private static ViewPager mViewPager;
     private List<Crime> mCrimes;
     private static final String EXTRA_CRIME_ID = "net.parkerstevens.criminalintent.crime_id";
+
+    public static void setViewPagerItemFirst(){
+        if(mViewPager != null){
+            mViewPager.setCurrentItem(0);
+        }
+    }
+
+    public static void setViewPagerItemLast(){
+        if(mViewPager != null){
+            int i = mViewPager.getAdapter().getCount();
+            i -= 1;
+            mViewPager.setCurrentItem(i);
+        }
+    }
 
     public static Intent newIntent(Context packageContext, UUID crimeId) {
         Intent intent = new Intent(packageContext, CrimePagerActivity.class);
