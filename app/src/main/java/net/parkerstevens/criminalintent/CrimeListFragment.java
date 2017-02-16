@@ -116,6 +116,7 @@ public class CrimeListFragment extends Fragment {
             mCrimeRecyclerView.setAdapter(mAdapter);
         }
         else {
+            mAdapter.setCrimes(crimes);
             mAdapter.notifyDataSetChanged();
         }
         updateSubtitle();
@@ -163,6 +164,9 @@ public class CrimeListFragment extends Fragment {
             mCrimes = crimes;
         }
 
+        public void setCrimes(List<Crime> crimes){
+            mCrimes = crimes;
+        }
         @Override
         public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
